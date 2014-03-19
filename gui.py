@@ -67,15 +67,14 @@ class MainWindow(Gtk.Window):
 		self.button3 = Gtk.Button(label = "Calculate Feed Rate")
 		self.button3.connect("clicked", self.on_button3_clicked)
 		vbox_column3.pack_start(self.button3, True, True, 0)
-		
 					
 		self.add(hbox)
 
 	def on_button1_clicked(self, widget):
-		print("button1")
+		print("test")
 
 	def on_button2_clicked(self, widget):
-			print("button2")
+		print("button2")
 
 	def on_button3_clicked(self, widget):
 		print("button3")
