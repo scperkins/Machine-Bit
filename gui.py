@@ -52,20 +52,30 @@ class MainWindow(Gtk.Window):
 		vbox_column1.pack_start(labelFeedRate, True, True, 0)
 
 		#second column input fields
-		self.toolDiameter = Gtk.Entry()
-		vbox_column2.pack_start(self.toolDiameter, True, True, 0)
+		adjustment = Gtk.Adjustment(0, 0, 100000, 1, 10, 0)
+		self.toolDiameter = Gtk.SpinButton()
+		self.toolDiameter.set_adjustment(adjustment)
+		vbox_column2.pack_start(self.toolDiameter, False, False, 0)
 
-		self.cuttingEdges = Gtk.Entry()
-		vbox_column2.pack_start(self.cuttingEdges, True, True, 0)
+		adjustment = Gtk.Adjustment(0, 0, 100000, 1, 10, 0)
+		self.cuttingEdges = Gtk.SpinButton()
+		self.cuttingEdges.set_adjustment(adjustment)
+		vbox_column2.pack_start(self.cuttingEdges, False, False, 0)
 
-		self.chipLoad = Gtk.Entry()
-		vbox_column2.pack_start(self.chipLoad, True, True, 0)
+		adjustment = Gtk.Adjustment(0, 0, 100000, 1, 10, 0)
+		self.chipLoad = Gtk.SpinButton()
+		self.chipLoad.set_adjustment(adjustment)
+		vbox_column2.pack_start(self.chipLoad, False, False, 0)
 
-		self.spindleRPM = Gtk.Entry()
-		vbox_column2.pack_start(self.spindleRPM, True, True, 0)
+		adjustment = Gtk.Adjustment(0, 0, 100000, 1, 10, 0)
+		self.spindleRPM = Gtk.SpinButton()
+		self.spindleRPM.set_adjustment(adjustment)
+		vbox_column2.pack_start(self.spindleRPM, False, False, 0)
 
-		self.feedRate = Gtk.Entry()
-		vbox_column2.pack_start(self.feedRate, True, True, 0)
+		adjustment = Gtk.Adjustment(0, 0, 100000, 1, 10, 0)
+		self.feedRate = Gtk.SpinButton()
+		self.feedRate.set_adjustment(adjustment)
+		vbox_column2.pack_start(self.feedRate, False, False, 0)
 
 		#buttons
 		self.button1 = Gtk.Button(label = "Calculate Chip Load")
@@ -95,55 +105,40 @@ class MainWindow(Gtk.Window):
 
 
 	def on_button1_clicked(self, widget):
-		toolDiam = self.toolDiameter.get_text()
-		toolDiam = float(toolDiam)
-		cuttingEdges = self.cuttingEdges.get_text()
-		cuttingEdges = float(cuttingEdges)
-		chipLoad = self.chipLoad.get_text()
-		chipLoad = float(chipLoad)
-		spindleRPM = self.spindleRPM.get_text()
-		spindleRPM = float(spindleRPM)
-		feedRate = self.feedRate.get_text()
-		feedRate = float(feedRate)
+		toolDiam = self.toolDiameter.get_value()
+		cuttingEdges = self.cuttingEdges.get_value()
+		chipLoad = self.chipLoad.get_value()
+		spindleRPM = self.spindleRPM.get_value()
+		feedRate = self.feedRate.get_value()
 
 		#calculate chip load
-		chipLoadFunc = formulas()
+		chipLoadFunc = Formulas()
 		chipLoadOutput = chipLoadFunc.calcChipLoad(feedRate, spindleRPM, cuttingEdges)
 		chipLoadOutput = str(chipLoadOutput)
 		self.outChipLoad.set_text(chipLoadOutput)
 
 		
 	def on_button2_clicked(self, widget):
-		toolDiam = self.toolDiameter.get_text()
-		toolDiam = float(toolDiam)
-		cuttingEdges = self.cuttingEdges.get_text()
-		cuttingEdges = float(cuttingEdges)
-		chipLoad = self.chipLoad.get_text()
-		chipLoad = float(chipLoad)
-		spindleRPM = self.spindleRPM.get_text()
-		spindleRPM = float(spindleRPM)
-		feedRate = self.feedRate.get_text()
-		feedRate = float(feedRate)
-
+		toolDiam = self.toolDiameter.get_value()
+		cuttingEdges = self.cuttingEdges.get_value()
+		chipLoad = self.chipLoad.get_value()
+		spindleRPM = self.spindleRPM.get_value()
+		feedRate = self.feedRate.get_value()
+		
 		#calculate RPM
-		rpmFunc = formulas()
+		rpmFunc = Formulas()
 		rpmOutput = rpmFunc.calcRPM(feedRate, cuttingEdges, chipLoad)
 		rpmOutput = str(rpmOutput)
 		self.outRPM.set_text(rpmOutput)
 
 	def on_button3_clicked(self, widget):
-		toolDiam = self.toolDiameter.get_text()
-		toolDiam = float(toolDiam)
-		cuttingEdges = self.cuttingEdges.get_text()
-		cuttingEdges = float(cuttingEdges)
-		chipLoad = self.chipLoad.get_text()
-		chipLoad = float(chipLoad)
-		spindleRPM = self.spindleRPM.get_text()
-		spindleRPM = float(spindleRPM)
-		feedRate = self.feedRate.get_text()
-		feedRate = float(feedRate)
-
-		feedRateFunc = formulas()
+		toolDiam = self.toolDiameter.get_value()
+		cuttingEdges = self.cuttingEdges.get_value()
+		chipLoad = self.chipLoad.get_value()
+		spindleRPM = self.spindleRPM.get_value()
+		feedRate = self.feedRate.get_value()
+		
+		feedRateFunc = Formulas()
 		feedRateOutput = feedRateFunc.calcFeedRate(spindleRPM, cuttingEdges, chipLoad)
 		feedRateOutput = str(feedRateOutput)
 		self.outFeedRate.set_text(feedRateOutput)
