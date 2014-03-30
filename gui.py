@@ -3,13 +3,6 @@ from gi.repository import Gtk
 
 class formulas:
 
-	# def __init__(self, toolDiam, feedRate, rpm, numCutEdges, spindleRPM):
-	# 	self.toolDiam = toolDiam
-	# 	self.feedRate = feedRate
-	# 	self.rpm = rpm
-	# 	self.numCutEdges = numCutEdges
-	# 	self.spindleRPM = spindleRPM
-
 	def calcChipLoad(self, feedRate, rpm, numCutEdges):
 		return feedRate/(rpm * numCutEdges)
 
@@ -80,6 +73,16 @@ class MainWindow(Gtk.Window):
 		self.button3 = Gtk.Button(label = "Calculate Feed Rate")
 		self.button3.connect("clicked", self.on_button3_clicked)
 		vbox_column3.pack_start(self.button3, True, True, 0)
+
+		#output boxes
+		self.outChipLoad = Gtk.Entry()
+		vbox_column4.pack_start(self.outChipLoad, True, True, 0)
+
+		self.outRPM = Gtk.Entry()
+		vbox_column4.pack_start(self.outRPM, True, True, 0)
+
+		self.outFeedRate = Gtk.Entry()
+		vbox_column4.pack_start(self.outFeedRate, True, True, 0)
 					
 		self.add(hbox)
 
@@ -98,7 +101,8 @@ class MainWindow(Gtk.Window):
 
 		chipLoadFunc = formulas()
 		chipLoadOutput = chipLoadFunc.calcChipLoad(feedRate, spindleRPM, cuttingEdges)
-		print chipLoadOutput
+		chipLoadOutput = str(chipLoadOutput)
+		self.outChipLoad.set_text(chipLoadOutput)
 
 		
 	def on_button2_clicked(self, widget):
