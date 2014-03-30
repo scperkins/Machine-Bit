@@ -93,6 +93,7 @@ class MainWindow(Gtk.Window):
 		#draw everything to the window			
 		self.add(hbox)
 
+
 	def on_button1_clicked(self, widget):
 		toolDiam = self.toolDiameter.get_text()
 		toolDiam = float(toolDiam)
