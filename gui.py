@@ -1,7 +1,7 @@
 #!/usr/bin/python
 from gi.repository import Gtk
 
-class formulas:
+class Formulas:
 
 	def calcChipLoad(self, feedRate, rpm, numCutEdges):
 		return feedRate/(rpm * numCutEdges)
