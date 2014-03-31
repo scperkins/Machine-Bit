@@ -8,7 +8,7 @@ Machine Bit is a small GTK+3 program to quickly calculate chip loads, feed rates
 
 # Screenshots
 ![alt text](/screenshots/screenshot1.png "Screenshot 1")
-![alt text](https://github.com/scperkins/Machine-Bit/master/screenshots/screenshot2.png "Screenshot 2")
+![alt text](/screenshots/screenshot2.png "Screenshot 2")
 
 
 
