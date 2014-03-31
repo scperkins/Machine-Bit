@@ -52,34 +52,37 @@ class MainWindow(Gtk.Window):
 		vbox_column1.pack_start(labelFeedRate, True, True, 0)
 
 		#second column input fields
-		adjustment = Gtk.Adjustment(0, 0, 100000, 1, 10, 0)
+		adjustment = Gtk.Adjustment(0.0, 0.0, 100000.0, .1, 10, 0)
 		self.toolDiameter = Gtk.SpinButton()
-		self.toolDiameter.set_numeric(True)
 		self.toolDiameter.set_adjustment(adjustment)
+		self.toolDiameter.set_digits(4)
+		self.toolDiameter.set_numeric(True)
 		vbox_column2.pack_start(self.toolDiameter, True, True, 0)
 
-		adjustment = Gtk.Adjustment(0, 0, 100000, 1, 10, 0)
 		self.cuttingEdges = Gtk.SpinButton()
 		self.cuttingEdges.set_numeric(True)
 		self.cuttingEdges.set_adjustment(adjustment)
+		self.cuttingEdges.set_digits(4)
 		vbox_column2.pack_start(self.cuttingEdges, True, True, 0)
 
-		adjustment = Gtk.Adjustment(0, 0, 100000, 1, 10, 0)
 		self.chipLoad = Gtk.SpinButton()
 		self.chipLoad.set_numeric(True)
 		self.chipLoad.set_adjustment(adjustment)
+		self.chipLoad.set_digits(4)
 		vbox_column2.pack_start(self.chipLoad, True, True, 0)
 
-		adjustment = Gtk.Adjustment(0, 0, 100000, 1, 10, 0)
+		
 		self.spindleRPM = Gtk.SpinButton()
 		self.spindleRPM.set_numeric(True)
 		self.spindleRPM.set_adjustment(adjustment)
+		self.spindleRPM.set_digits(4)
 		vbox_column2.pack_start(self.spindleRPM, True, True, 0)
 
-		adjustment = Gtk.Adjustment(0, 0, 100000, 1, 10, 0)
+		
 		self.feedRate = Gtk.SpinButton()
 		self.feedRate.set_numeric(True)
 		self.feedRate.set_adjustment(adjustment)
+		self.feedRate.set_digits(4)
 		vbox_column2.pack_start(self.feedRate, True, True, 0)
 
 		#buttons
