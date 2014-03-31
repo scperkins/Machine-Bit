@@ -143,9 +143,15 @@ class MainWindow(Gtk.Window):
 		
 		#calculate RPM
 		rpmFunc = Formulas()
-		rpmOutput = rpmFunc.calcRPM(feedRate, cuttingEdges, chipLoad)
-		rpmOutput = str(rpmOutput)
-		self.outRPM.set_text(rpmOutput)
+		if cuttingEdges == 0 or chipLoad == 0:
+			dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.ERROR, Gtk.ButtonsType.CANCEL, "Illegal Operand:")
+			dialog.format_secondary_text("Chip Load and Cutting Edges must be greater than zero!")
+			dialog.run()
+			dialog.destroy()
+		else:
+			rpmOutput = rpmFunc.calcRPM(feedRate, cuttingEdges, chipLoad)
+			rpmOutput = str(rpmOutput)
+			self.outRPM.set_text(rpmOutput)
 
 	def on_button3_clicked(self, widget):
 		toolDiam = self.toolDiameter.get_value()
